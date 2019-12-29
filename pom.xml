@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.study</groupId>
+    <artifactId>my-ark-biz</artifactId>
+    <version>1.0</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.alipay.sofa</groupId>
+            <artifactId>sofa-ark-support-starter</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.study</groupId>
+            <artifactId>my-ark-plugin1</artifactId>
+            <version>1.0</version>
+            <!-- ark-plugin -->
+            <classifier>ark-plugin</classifier>
+        </dependency>
+        <dependency>
+            <groupId>io.study</groupId>
+            <artifactId>my-ark-plugin2</artifactId>
+            <version>1.0</version>
+            <!-- ark-plugin -->
+            <classifier>ark-plugin</classifier>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.alipay.sofa</groupId>
+                <artifactId>sofa-ark-maven-plugin</artifactId>
+                <version>1.1.0</version>
+                <executions>
+                    <execution>
+                        <id>default-cli</id>
+                        <!--goal executed to generate executable-ark-jar -->
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <!--specify destination where executable-ark-jar will be saved, default saved to ${project.build.directory}-->
+                            <outputDirectory>./</outputDirectory>
+                            <!--default none, 可执行fat jar-->
+                            <arkClassifier>executable-ark</arkClassifier>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
