@@ -2,3 +2,6 @@
 .idea/
 **/*.iml
 **/target
+
+#ark生成的jar
+*.jar
